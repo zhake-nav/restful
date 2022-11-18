@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url(../images/bg4.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.login-form {
+    width: 300px;
+    background: #191919;
+    padding: 30px;
+    /* 水平居中处理 */
+    margin: 5% auto 0 auto;
+    /* 圆角效果 */
+    border-radius: 30px;
+    opacity: 0.6;
+    text-align: center;
+}
+
+.login-form h1 {
+    color: white;
+    font-weight: 500;
+}
+.login-form h3 {
+    color: white;
+    font-weight: 200;
+}
+
+.login-form input[type="text"], .login-form input[type="password"] {
+    background: none;
+    width: 200px;
+    border: 2px solid #3498db;
+    border-radius: 25px;
+    font-size: 16px;
+    margin: 10px auto;
+    padding: 10px 10px;
+    text-align: center;
+    outline: none;
+    color: white;
+    /* CSS3 过渡效果，设置时长 */
+    transition: 0.25s;
+}
+
+.login-form input[type="text"]:focus, .login-form input[type="password"]:focus {
+    width: 280px;
+    border-color: #2ecc71;
+}
+
+.login-form input[type="submit"], .login-form input[type="button"] {
+    background: none;
+    border: 2px solid #f27668;
+    border-radius: 25px;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px 30px;
+    margin: 20px 10px;
+    /* 设置鼠标为可点击状态 */
+    cursor: pointer;
+    outline: none;
+    /* 设置过渡时长 */
+    transition: 0.25s;
+}
+
+.login-form input[type="submit"]:hover, .login-form input[type="button"]:hover {
+    background: #f27668;
+}
+.message {
+    color: #white;
+    background-color: #909399;
+    padding: 3px 5px 3px 5px;
+    border-radius: 3px 0px 0px 3px;
+    margin: 0px;
+}
+.message_0 {
+    color: #white;
+    background-color: #67C23A;
+    padding: 3px 5px 3px 5px;
+    border-radius: 0px 3px 3px 0px;
+    margin: 0px 0px 0px -5px;
+}
+.message_-1 {
+    color:#white;
+    background-color: #F56C6C;
+    padding: 3px 5px 3px 5px;
+    border-radius: 0px 3px 3px 0px;
+    margin: 0px 0px 0px -5px;
+}
