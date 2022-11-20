@@ -20,31 +20,45 @@
 
 <!-- 前端完成数据检验 调用api中的方法完成注册-->
 <body>
-    <form onsubmit="return check_vote('gender')" name="vote_form" class="login-form" action="${basePath}/suit/regist" method="POST">
+    <form name="vote_form" class="login-form" method="post">
         <h1>用户注册</h1>
-        <h4>用户名称：<input type="text" required="required" name="loginname" value="${userView.loginname}"></h4>
-       <h4>用户实名： <input type="text" required="required" name="username" value="${userView.username}"></h4>
-       <h4>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="password" required="required" name="password"></h4>
-       <h4>密码确认：<input type="password" required="required" name="comfirmPassword"></h4>
+        <h4>用户名称：<input type="text" required="required" name="loginname" id="loginname" value="${userView.loginname}"></h4>
+       <h4>用户实名： <input type="text" required="required" name="username" id="username" value="${userView.username}"></h4>
+       <h4>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="password" id="pw" required="required" name="password"></h4>
+       <h4>密码确认：<input type="password" id="repw"  name="comfirmPassword"  onkeyup="checkpassword()">
+       <span id="tishi"></span></h4>
+       
        <h4>
        		性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：
-       		<input type="radio"  name="gender" value="0" onclick="judgeSex()">女
-       			   <input type="radio" name="gender" value="1" onclick="judgeSex()">男
+       		<input type="radio"  name="gender" id="gender" value="0" onclick="judgeSex()" class="but">女
+       		 <input type="radio" name="gender" id="gender" value="1" onclick="judgeSex()" class="but">男
     	</h4>
     	<!-- style="width: 54px; height: 81px;" -->
-    	
+    	<p>模 型 选 择</p>
     		<!-- 第一个人像 -->
-    		<div id="man1Div" style="display:inline; border: red 2px; width: 58px; height: 84px;"></div>
+    		<div id="man1Div" class="abc" tabindex="1"></div>
     		<!-- 第二个人像 -->
-    		<div id="man2Div" style="display:inline; border: red 2px; width: 58px; height: 84px;"></div><br>
+    		<!-- style="display:inline; border: red 2px; width: 58px; height: 84px;" -->
+    		<div id="man2Div"  class="abc" tabindex="1"></div><br>
  
 		
 
-        <input type="submit" value="注 册">
-        <input type="button" value="返 回" onclick="goBack()"><br>
+        <input type="button" id="submit" onclick="doAdd()" value="点击注册">
+        <input type="button" value="返回登录" onclick="goBack()"><br>
     </form>
 </body>
 <script>
+	$(document).ready(function(e) {
+		$('.abc').hide();
+	    $(".but").click(function(e) {
+	    	if( $(".abc").hasClass("show") ){
+	        }else{
+	            // 显示
+	            $(".abc").show().addClass("show");
+	        }
+	    });
+	});
+
 	var baseUrl = "${basePath}/suit/";  
 	function goBack() {
 	    window.history.back()
@@ -65,6 +79,7 @@
 		return false;
 	}
 	
+	// 判断性别显示相关图片
 	function judgeSex() {
 		var genderVal = $('input:radio:checked').val()
 		if (genderVal == 1) {
@@ -97,5 +112,67 @@
 		}
 		
 	}
+	
+	// 判断密码是否一致
+	function checkpassword() {
+		var password = document.getElementById("pw").value;
+		var repassword = document.getElementById("repw").value;
+		
+		if(password == repassword) {
+			 document.getElementById("tishi").innerHTML="";
+			 document.getElementById("submit").disabled = false;
+			
+		 }else {
+			 document.getElementById("tishi").innerHTML="<br><font color='red'>两次输入密码不一致!</font>";
+    		 document.getElementById("submit").disabled = true; 
+		 } 
+	}
+	
+	
+	function doSearch(){
+		alert("doSearch")
+        var input = $("#loginname");
+        var user = {"loginname":input.val()};
+        request("POST","<%=basePath%>/suit/getByName",user,drawList,serverError,true);
+    }
+	
+	function doAdd(){
+		
+        var user = {};
+        user.loginname = $("#loginname").val();
+        user.username = $("#username").val();
+        user.password = $("#pw").val();
+        user.gender = $('#gender').val();
+
+        request("POST","<%=basePath%>/suit/regist",user,doSearch,serverError,true);
+    }
+	function drawList(responseData){
+		alert("drawList")
+        showMessage(responseData);
+	}
+	function showMessage(responseData){
+		alert("showMessage")
+        console.log("showMessage",responseData);
+        alert(responseData.description);
+    }
+	
+	
+	function request(method,url,data,successCallBack,errorCallBack,async){
+        $.ajax({
+            url: url,
+            async:async,
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            method: method
+        }).success(successCallBack).error(errorCallBack);
+    }
+	function serverError(XMLHttpRequest, textStatus){
+        console.log("responseText:",XMLHttpRequest.responseText);
+        console.log("status:",XMLHttpRequest.status);
+        console.log("textStatus:",textStatus);
+        console.log("readyState:",XMLHttpRequest.readyState);
+        alert("服务器错误，请检查前后台控制台输出！");
+    }
+
 </script>
 </html>

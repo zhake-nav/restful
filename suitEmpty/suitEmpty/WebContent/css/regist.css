@@ -14,7 +14,7 @@ body {
     margin: 5% auto 0 auto;
     /* 圆角效果 */
     border-radius: 30px;
-    opacity: 0.8;
+    opacity: 0.9;
     text-align: center;
 }
 
@@ -26,6 +26,17 @@ body {
     color: white;
     font-weight: 150;
 }
+
+.login-form p {
+   color: white;
+    width: 290px;
+    height: 30px;
+    text-align: center;
+    font-size: 20px;
+    padding-left: 10px;
+    background-color: #3498db;
+}
+
 
 .login-form input[type="text"], .login-form input[type="password"] {
     background: none;
@@ -66,31 +77,19 @@ body {
 .login-form input[type="submit"]:hover, .login-form input[type="button"]:hover {
     background: #f27668;
 }
-.message {
-    color: #FFFFFF;
-    background-color: #909399;
-    padding: 3px 5px 3px 5px;
-    border-radius: 3px 0px 0px 3px;
-    margin: 0px;
+.login-form div {
+	display: inline-block;
+	border-radius: 10px;
+	transition: 0.3s;
+	width: 60px; 
+	height: 88px;
+	margin: 0 auto;
 }
-.message_0 {
-    color: #FFFFFF;
-    background-color: #67C23A;
-    padding: 3px 5px 3px 5px;
-    border-radius: 0px 3px 3px 0px;
-    margin: 0px 0px 0px -5px;
+
+.login-form div:hover {
+	box-shadow: 0 0 20px 2px rgba(18, 99, 238, 0.4);
 }
-.message_-1 {
-    color: #FFFFFF;
-    background-color: #F56C6C;
-    padding: 3px 5px 3px 5px;
-    border-radius: 0px 3px 3px 0px;
-    margin: 0px 0px 0px -5px;
-}
-.div {
-	display:inline;
-}
-.img {
-	width: 54px;
-    height: 81px;
-}
+.login-form div:focus {
+      background-color: rgb(67, 150, 202);
+      color: white;
+    }

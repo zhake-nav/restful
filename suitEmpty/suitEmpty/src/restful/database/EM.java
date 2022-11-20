@@ -4,7 +4,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 public class EM {
     static final EntityManagerFactory emf =
-                      Persistence.createEntityManagerFactory("sqlserver2008");
+                      Persistence.createEntityManagerFactory("DM8");
     private static final EntityManager entityManager = emf.createEntityManager();
     public static EntityManager getEntityManager(){
         synchronized (EntityManager.class){  
@@ -13,7 +13,7 @@ public class EM {
                                           entityManager.getTransaction().rollback();
             if(!entityManager.getTransaction().isActive()) 
                                           entityManager.getTransaction().begin();
-        }
+        }        
         return entityManager;
     }
 }

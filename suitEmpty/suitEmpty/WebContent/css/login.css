@@ -14,7 +14,7 @@ body {
     margin: 5% auto 0 auto;
     /* 圆角效果 */
     border-radius: 30px;
-    opacity: 0.6;
+    opacity: 0.9;
     text-align: center;
 }
 
@@ -66,24 +66,17 @@ body {
 .login-form input[type="submit"]:hover, .login-form input[type="button"]:hover {
     background: #f27668;
 }
-.message {
-    color: #white;
-    background-color: #909399;
-    padding: 3px 5px 3px 5px;
-    border-radius: 3px 0px 0px 3px;
-    margin: 0px;
-}
-.message_0 {
-    color: #white;
-    background-color: #67C23A;
-    padding: 3px 5px 3px 5px;
-    border-radius: 0px 3px 3px 0px;
-    margin: 0px 0px 0px -5px;
-}
-.message_-1 {
-    color:#white;
-    background-color: #F56C6C;
-    padding: 3px 5px 3px 5px;
-    border-radius: 0px 3px 3px 0px;
-    margin: 0px 0px 0px -5px;
-}
+.login-form div{
+        border-radius: 10px;
+        box-shadow: 0 0 20px 2px rgb(0 0 0 / 40%);
+        transition:0.3s;
+        width: 58px;
+        height: 84px
+        margin:0 auto;
+    }
+.login-form div{
+        margin-top:10px;
+    }
+.login-form div:hover{
+        box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    }

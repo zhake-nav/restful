@@ -15,12 +15,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>首页</title>
     <!-- 引入外部CSS文件 -->
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/index.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/login.css" />
 </head>
 
 <!-- 前端完成数据检验 调用api中的方法完成登录-->
 <body>
-    <form class="login-form" action="${basePath}/suit/login" method="POST">
+    <form class="login-form" action="<%=basePath%>/suit/login" method="POST">
         <h1>用户登录</h1>
         <input type="text" name="loginname" placeholder="用户名...">
         <input type="password" name="password" placeholder="密码...">
